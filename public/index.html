@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Countries List</title>
+    <script src="./js/bundle.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <label for="">{{ totalPop }}</label>
+      <div>
+        <button v-on:click="fetchCountries">Gimme countries</button>
+        <button v-on:click="calculateTotalPopulation">Calculate</button>
+        <ul>
+          <li v-for="(country, index) in countries">
+            {{ country.name }}
+            <button v-on:click="showInfo(index)">Show info</button>
+            <button v-on:click="addToFavourite(index)">Add to Favourite</button>
+          </li>
+        </ul>
+        <span>
+          <h1>Selected country details</h1>
+          <h2>{{ country.name }}</h2>
+          <p>{{ country.population }}</p>
+          <p v-for="country in neighbours">{{ country }}</p>
+          <img v-if="country.flag" :src="country.flag">
+        </span>
+        <h1>Favourite Countries</h1>
+        <ul>
+          <li v-for="country in favourites">
+            <h2>{{ country.name }}</h2>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
